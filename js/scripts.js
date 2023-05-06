@@ -1,4 +1,7 @@
-alert("Hello World");
+let typeArray = ["fire", "grass", "water"];
 
-let favoriteFood = "tacos";
-document.write(favoriteFood);
+let pokemonList = [
+  { name: "Bulbasaur", height: 28, type: typeArray[1] },
+  { name: "Charmander", height: 24, type: typeArray[0] },
+  { name: "Squirtle", height: 20, type: typeArray[2] },
+];
