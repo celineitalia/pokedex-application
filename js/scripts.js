@@ -17,15 +17,18 @@ let pokemonRepository = (function () {
     getAll: function () {
       return pokemonList;
     },
+    addListItem: function addListItem(pokemon) {
+      let element = document.querySelector(".pokemon-list");
+      let listItem = document.createElement("li");
+      let button = document.createElement("button");
+      button.innerText = pokemon.name;
+      button.classList.add("button-class");
+      listItem.appendChild(button);
+      element.appendChild(listItem);
+    },
   };
 })();
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-  let element = document.querySelector(".pokemon-list");
-  let listItem = document.createElement("li");
-  let button = document.createElement("button");
-  button.innerText = pokemon.name;
-  button.classList.add("button-class");
-  listItem.appendChild(button);
-  element.appendChild(listItem);
+  pokemonRepository.addListItem(pokemon);
 });
