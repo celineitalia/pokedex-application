@@ -21,14 +21,11 @@ let pokemonRepository = (function () {
 })();
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-  document.write(
-    "<p>" +
-      pokemon.name +
-      " (height: " +
-      pokemon.height +
-      " inches, type: " +
-      pokemon.type +
-      ")" +
-      "</p>"
-  );
+  let element = document.querySelector(".pokemon-list");
+  let listItem = document.createElement("li");
+  let button = document.createElement("button");
+  button.innerText = pokemon.name;
+  button.classList.add("button-class");
+  listItem.appendChild(button);
+  element.appendChild(listItem);
 });
