@@ -17,6 +17,9 @@ let pokemonRepository = (function () {
     getAll: function () {
       return pokemonList;
     },
+    showDetails: function (pokemon) {
+      console.log(pokemon);
+    },
     addListItem: function addListItem(pokemon) {
       let element = document.querySelector(".pokemon-list");
       let listItem = document.createElement("li");
@@ -25,6 +28,9 @@ let pokemonRepository = (function () {
       button.classList.add("button-class");
       listItem.appendChild(button);
       element.appendChild(listItem);
+      button.addEventListener("click", function showDetails(pokemon) {
+        console.log(pokemon);
+      });
     },
   };
 })();
