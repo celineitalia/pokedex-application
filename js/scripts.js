@@ -80,17 +80,31 @@ let pokemonRepository = (function () {
   //showDetails() function
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
+      let modalContainer = document.querySelector("#modal-container");
+      modalContainer.innerHTML = "";
       modalContainer.classList.add("is-visible");
-      let modalCloseButton = document.querySelector(".modal-close");
+      let modal = document.createElement("div");
+      modal.classList.add("modal");
+      let modalCloseButton = document.createElement("button");
+      modalCloseButton.innerHTML = "Close";
+      modalCloseButton.classList.add("modal-close");
       modalCloseButton.addEventListener("click", hideModal);
-      let modalTitle = document.querySelector("#modal-title");
+      let modalTitle = document.createElement("h1");
+      modalTitle.classList.add("modal-title");
       modalTitle.innerText = pokemon.name;
-      let imageContainer = document.querySelector("#image-container");
+      let imageContainer = document.createElement("div");
+      imageContainer.classList.add("image-container");
       let pokemonImage = document.createElement("img");
       pokemonImage.src = pokemon.imageUrl;
       imageContainer.appendChild(pokemonImage);
-      let modalText = document.querySelector("#modal-text");
+      let modalText = document.createElement("p");
+      modalText.classList.add("modal-text");
       modalText.innerText = "Height: " + pokemon.height;
+      modal.appendChild(modalCloseButton);
+      modal.appendChild(modalTitle);
+      modal.appendChild(modalText);
+      modal.appendChild(imageContainer);
+      modalContainer.appendChild(modal);
       modalContainer.addEventListener("click", (e) => {
         let target = e.target;
         if (target === modalContainer) {
@@ -120,7 +134,6 @@ let pokemonRepository = (function () {
     addListItem: addListItem,
     loadList: loadList,
     showDetails: showDetails,
-    hideModal: hideModal,
   };
 })();
 
